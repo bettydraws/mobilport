@@ -1,15 +1,25 @@
-const {Button, TextView, ui} = require('tabris');
+const {Composite, TextView, ui} = require('tabris');
 
-let button = new Button({
-  centerX: 0, top: 100,
-  text: 'Show message'
+// Create composites and append children to them
+
+let composite1 = new Composite({
+  left: 0, top: 0, bottom: 0, right: '50%',
+  background: '#f3f3f3'
 }).appendTo(ui.contentView);
 
-let textView = new TextView({
-  centerX: 0, top: [button, 50],
-  font: '24px'
+new TextView({
+  left: 0, right: 0, top: '50%', 
+  alignment: 'center',
+  text: 'Composite 1'
+}).appendTo(composite1);
+
+let composite2 = new Composite({
+  left: '50%', top: 0, bottom: 0, right: 0,
+  background: '#ef0000'
 }).appendTo(ui.contentView);
 
-button.on('select', () => {
-  textView.text = 'Tabris.js rocks!';
-});
+new TextView({
+  left: 0, right: 0, top: '50%',
+  alignment: 'center',
+  text: 'Composite 2'
+}).appendTo(composite2);
